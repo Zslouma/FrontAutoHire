@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "slouma_v1 (Flutter)",
+            "program": "lib/main.dart",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}
