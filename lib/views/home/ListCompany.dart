@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -9,11 +8,11 @@ import 'package:slouma_v1/models/AvisModel.dart';
 import "package:slouma_v1/utils/utils.dart";
 import 'package:slouma_v1/views/widget/rating.dart';
 
+import 'ListAvis.dart';
+import 'ListEmployee.dart';
+
 class ListCompany extends StatelessWidget {
   String idCompany;
-  int s = 0;
-  int l;
-  int avg;
 
   getCompany() async {
     var res = await http.get(Uri.http(Utils.url, Utils.company));
@@ -66,8 +65,6 @@ class ListCompany extends StatelessWidget {
           future: getCompany(),
           builder: (context, snapshot) {
             if (snapshot.data != null) {
-              l = snapshot.data.length;
-
               return Scaffold(
                 body: new Stack(
                   children: <Widget>[
@@ -87,26 +84,54 @@ class ListCompany extends StatelessWidget {
 
                         return Card(
                           elevation: 10,
-                          child: ListTile(
-                            selectedTileColor: Colors.black,
-                            leading: Icon(Icons.arrow_drop_down_circle),
-                            title: Text(snapshot.data[index]['nom'],
-                                style: TextStyle(color: Colors.white)),
-                            tileColor: Color(0xFFC51162),
-                            subtitle: Text(snapshot.data[index]['industry'],
-                                style: TextStyle(color: Colors.white)),
-                            trailing: IconButton(
-                              // deleteee
-                              /* icon: Icon(Icons.delete),
-                              onPressed: () => confirtDelete(
-                                  snapshot.data[index]['id'], context),*/
-                              icon: Icon(Icons.rate_review_outlined),
-                              padding: const EdgeInsets.only(right: 15),
-                              onPressed: () {
-                                idCompany = snapshot.data[index]['id'];
-                                _RatingModalBottomSheet(context);
-                              },
-                            ),
+                          child: InkWell(
+                            child: ListTile(
+                                selectedTileColor: Colors.black,
+                                leading: Icon(Icons.arrow_drop_down_circle),
+                                title: Text(snapshot.data[index]['nom'],
+                                    style: TextStyle(color: Colors.pink)),
+                                tileColor: Color(0xFFF8BBD0),
+                                subtitle: Text(snapshot.data[index]['industry'],
+                                    style: TextStyle(color: Colors.pink)),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    IconButton(
+                                      // deleteee
+                                      /* icon: Icon(Icons.delete),
+                                onPressed: () => confirtDelete(
+                                    snapshot.data[index]['id'], context),*/
+                                      icon: Icon(Icons.rate_review_outlined),
+                                      padding: const EdgeInsets.only(right: 15),
+                                      onPressed: () {
+                                        idCompany = snapshot.data[index]['id'];
+                                        _RatingModalBottomSheet(context);
+                                      },
+                                    ),
+                                    IconButton(
+                                      icon: Icon(Icons.people),
+                                      padding: const EdgeInsets.only(right: 15),
+                                      onPressed: () {
+                                        String idCmp =
+                                            snapshot.data[index]['id'];
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ListEmployee(idC: idCmp)),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                )),
+                            onTap: () {
+                              String idCmp = snapshot.data[index]['id'];
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ListAvis(idA: idCmp)),
+                              );
+                            },
                           ),
                         );
                       },
@@ -121,61 +146,6 @@ class ListCompany extends StatelessWidget {
             }
           },
         ),
-        /*child: FutureBuilder(
-          future: getCompany(),
-          builder: (context, snapshot) {
-            if (snapshot.data != null) {
-              return Scaffold(
-                body: new Stack(
-                  children: <Widget>[
-                    new Container(
-                      decoration: new BoxDecoration(
-                        image: new DecorationImage(
-                          image: new AssetImage("assets/images/Welcome.png"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    new Center(
-                        child: ListView.builder(
-                      itemCount: snapshot.data.length,
-                      itemBuilder: (context, index) {
-                        return Card(
-                          elevation: 10,
-                          child: ListTile(
-                            selectedTileColor: Colors.black,
-                            leading: Icon(Icons.arrow_drop_down_circle),
-                            title: Text(snapshot.data[index]['nom'],
-                                style: TextStyle(color: Colors.white)),
-                            tileColor: Color(0xFFC51162),
-                            subtitle: Text(snapshot.data[index]['industry'],
-                                style: TextStyle(color: Colors.white)),
-                            trailing: IconButton(
-                              // deleteee
-                              /* icon: Icon(Icons.delete),
-                              onPressed: () => confirtDelete(
-                                  snapshot.data[index]['id'], context),*/
-                              icon: Icon(Icons.rate_review_outlined),
-                              padding: const EdgeInsets.only(right: 15),
-                              onPressed: () {
-                                idCompany = snapshot.data[index]['id'];
-                                _RatingModalBottomSheet(context);
-                              },
-                            ),
-                          ),
-                        );
-                      },
-                    ))
-                  ],
-                ),
-                bottomNavigationBar:
-                    CustomBottomNavBar(selectedMenu: MenuState.home),
-              );
-            } else {
-              return Center(child: Text("hi ena list company wahdi"));
-            }
-          },
-        ),*/
       ),
     );
   }
@@ -209,23 +179,10 @@ class ListCompany extends StatelessWidget {
 
   void _RatingModalBottomSheet(context) {
     int _rating;
-    int result;
+
     AvisModel _avis;
     final TextEditingController commentController = TextEditingController();
-    avg = (s / l).round();
-    if ((avg <= 1)) {
-      result = 1;
-    } else if (avg <= 2) {
-      result = 2;
-    } else if (avg <= 3) {
-      result = 3;
-    } else if (avg <= 4) {
-      result = 4;
-    } else if (avg > 4) {
-      result = 5;
-    } else {
-      result = 0;
-    }
+
     showModalBottomSheet(
         context: context,
         builder: (BuildContext bc) {
@@ -264,73 +221,6 @@ class ListCompany extends StatelessWidget {
                               tooltip: 'Increment',
                               icon: Icon(Icons.add),
                             ),
-                            FutureBuilder(
-                              future: getAvis(),
-                              builder: (context, snapshot) {
-                                if (snapshot.data != null) {
-                                  /*  return ListView(children: [
-                                    ListView.builder(
-                                      itemCount: snapshot.data.length,
-                                      itemBuilder: (context, index) {
-                                        return Card(
-                                          elevation: 10,
-                                          child: ListTile(
-                                            title: Text(
-                                                snapshot.data[index]
-                                                    ['commentaire'],
-                                                style: TextStyle(
-                                                    color: Colors.white)),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  ]);
-*/
-                                  /*   return new Row(children: <Widget>[
-                                    Expanded(
-                                        child: SizedBox(
-                                      height: 20.0,
-                                      child: new ListView.builder(
-                                        itemCount: snapshot.data.length,
-                                        itemBuilder: (context, index) {
-                                          child:
-                                          new ListTile(
-                                              leading:
-                                                  new Icon(Icons.music_note),
-                                              title: new Text(
-                                                  snapshot.data[index]['nom']),
-                                              onTap: () => {});
-                                        },
-                                      ),
-                                    ))
-                                  ]);*/
-
-                                  return new Row(children: <Widget>[
-                                    Expanded(
-                                      child: SizedBox(
-                                        height: 20.0,
-                                        child: new ListTile(
-                                            leading: new Icon(Icons.comment),
-                                            title: new Text("rahy tekhdem"),
-                                            onTap: () => {}),
-                                      ),
-                                    )
-                                  ]);
-                                } else {
-                                  return new Row(children: <Widget>[
-                                    Expanded(
-                                      child: SizedBox(
-                                        height: 20.0,
-                                        child: new ListTile(
-                                            leading: new Icon(Icons.music_note),
-                                            title: new Text('music'),
-                                            onTap: () => {}),
-                                      ),
-                                    )
-                                  ]);
-                                }
-                              },
-                            ),
                             _avis == null
                                 ? Container()
                                 : Text(
@@ -343,57 +233,3 @@ class ListCompany extends StatelessWidget {
         });
   }
 }
-
-/*
-class PopularProducts extends StatelessWidget {
-  getCompany() async {
-    var res = await http.get(Uri.http('192.168.43.94:3000', '/entreprise'));
-    if (res.statusCode == 200) {
-      var jsonObj = json.decode(res.body);
-      return jsonObj;
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: getProportionateScreenWidth(20)),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: (<Widget>[
-              Expanded(
-                child: FutureBuilder(
-                  future: getCompany(),
-                  builder: (context, snapshot) {
-                    if (snapshot.data != null) {
-                      return ListView.builder(
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (context, index) {
-                          return Card(
-                            elevation: 4,
-                            child: ListTile(
-                              title: Text(snapshot.data[index]['nom']),
-                              subtitle: Text(snapshot.data[index]['industry']),
-                              trailing: IconButton(
-                                  icon: Icon(Icons.delete),
-                                  //onPressed: () => print("good")
-                                  confirtDelete(snapshot.data[index]['id'], context),
-                                  ),
-                            ),
-                          );
-                        },
-                      );
-                    } else {
-                      return Center(child: Text("hi"));
-                    }
-                  },
-                ),
-              )
-            ]),
-          ),
-        )
-      ],
-    );
-  }*/

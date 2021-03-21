@@ -21,8 +21,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  flutter_dialogflow_v2: ^0.3.2
   flutter:
-    sdk: flutter
+    sdk: flutter 
+   
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -54,6 +56,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/vibrant-beanbag-307916-a645d9852ea3.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

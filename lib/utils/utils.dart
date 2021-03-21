@@ -5,4 +5,6 @@ class Utils {
   static String test = "/test/";
   static String avis = "/avis";
   static String offre = "/offre";
+  static String user = "/user/";
+  static String evaluation = "/evaluation";
 }
