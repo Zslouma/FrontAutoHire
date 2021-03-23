@@ -138,8 +138,6 @@ class ListCompany extends StatelessWidget {
                     ))
                   ],
                 ),
-                bottomNavigationBar:
-                    CustomBottomNavBar(selectedMenu: MenuState.home),
               );
             } else {
               return Center(child: Text("hi ena list company wahdi"));
@@ -147,6 +145,7 @@ class ListCompany extends StatelessWidget {
           },
         ),
       ),
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
     );
   }
 

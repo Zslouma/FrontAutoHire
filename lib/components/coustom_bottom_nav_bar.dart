@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:slouma_v1/videocall/UI/home_page.dart';
 import 'package:slouma_v1/views/home/ListCompany.dart';
 import 'package:slouma_v1/views/home/ListOffres.dart';
-import 'package:slouma_v1/views/home/listCandidature.dart';
 import 'package:slouma_v1/views/home/listTest.dart';
-import 'package:slouma_v1/views/sign_in/sign_in_screen.dart';
 
 import '../constants.dart';
 import '../enums.dart';
@@ -79,7 +78,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       : inActiveIconColor,
                 ),
                 onPressed: () =>
-                    Navigator.pushNamed(context, SignInScreen.routeName),
+                    Navigator.pushNamed(context, HomePage.routeName),
               ),
             ],
           )),

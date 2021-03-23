@@ -20,7 +20,6 @@ class ListTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: Center(
         child: FutureBuilder(
           future: getCompany(),
@@ -64,8 +63,6 @@ class ListTest extends StatelessWidget {
                     ))
                   ],
                 ),
-                bottomNavigationBar:
-                    CustomBottomNavBar(selectedMenu: MenuState.message),
               );
             } else {
               return Center(child: Text("hi ena list test wahdi"));
@@ -73,6 +70,7 @@ class ListTest extends StatelessWidget {
           },
         ),
       ),
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.message),
     );
   }
 

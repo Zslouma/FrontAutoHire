@@ -21,7 +21,6 @@ class ListOffres extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: Center(
         child: FutureBuilder(
           future: getOffres(),
@@ -76,8 +75,6 @@ class ListOffres extends StatelessWidget {
                     ))
                   ],
                 ),
-                bottomNavigationBar:
-                    CustomBottomNavBar(selectedMenu: MenuState.message),
               );
             } else {
               return Center(child: Text("hi ena list offre wahdi"));
@@ -85,6 +82,8 @@ class ListOffres extends StatelessWidget {
           },
         ),
       ),
+      bottomNavigationBar:
+          CustomBottomNavBar(selectedMenu: MenuState.favourite),
     );
   }
 

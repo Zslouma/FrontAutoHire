@@ -35,6 +35,13 @@ dependencies:
   flutter_svg: ^0.19.0 # help us to use SVG in our app
   provider: ^4.3.1 # for State management
   persistent_bottom_nav_bar: ^3.1.0
+  get: ^3.10.2
+  google_fonts: ^1.1.0
+  agora_rtc_engine: ^1.0.15
+  permission_handler:
+  flutter_share:
+  signal_strength_indicator:
+  convex_bottom_bar:  
 
 
 dev_dependencies:
