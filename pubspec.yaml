@@ -24,7 +24,7 @@ dependencies:
   flutter_dialogflow_v2: ^0.3.2
   flutter:
     sdk: flutter 
-   
+  
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -32,7 +32,7 @@ dependencies:
   cupertino_icons: ^0.1.3
   http: ^0.12.0
   # if you are using latest flutter please update your flutter_svg package to ^0.18.*
-  flutter_svg: ^0.19.0 # help us to use SVG in our app
+  flutter_svg: ^0.20.0-nullsafety.3 # help us to use SVG in our app
   provider: ^4.3.1 # for State management
   persistent_bottom_nav_bar: ^3.1.0
   get: ^3.10.2

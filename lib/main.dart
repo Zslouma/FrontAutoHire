@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:slouma_v1/videocall/UI/home_page.dart';
 import 'routes.dart';
 import 'theme.dart';
+import 'package:slouma_v1/views/home/home.dart';
 import 'views/splash/splash_screen.dart';
 import 'package:get/get.dart';
+import 'package:slouma_v1/views/home/ListOffres.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +21,8 @@ class MyApp extends StatelessWidget {
       theme: theme(),
       // home: SplashScreen(),
       // We use routeName so that we dont need to remember the name
-      initialRoute: SplashScreen.routeName,
+      initialRoute: ListOffres.routeName,
+
       routes: routes,
     );
   }

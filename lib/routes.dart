@@ -1,7 +1,9 @@
+
 import 'package:flutter/widgets.dart';
 import 'package:slouma_v1/videocall/UI/home_page.dart';
 import 'package:slouma_v1/views/forgot_password/forgot_password_screen.dart';
 import 'package:slouma_v1/views/home/ListCompany.dart';
+import 'package:slouma_v1/views/home/ListOffres.dart';
 import 'package:slouma_v1/views/home/home.dart';
 import 'package:slouma_v1/views/home/listCandidature.dart';
 import 'package:slouma_v1/views/home/listTest.dart';
@@ -24,7 +26,7 @@ final Map<String, WidgetBuilder> routes = {
   ListCandidature.routeName: (context) => ListCandidature(),
   HomeScreen.routeName: (context) => HomeScreen(),
   HomePage.routeName: (context) => HomePage(),
-
+  ListOffres.routeName : (context) => ListOffres(),
   /*CompleteProfileScreen.routeName: (context) => CompleteProfileScreen(),
   OtpScreen.routeName: (context) => OtpScreen(),
   

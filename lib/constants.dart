@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:slouma_v1/size_config.dart';
 
+const colors = [Color(0xFFFFA53E), Color(0xFFFF7643)];
 const kPrimaryColor = Color(0xFFC51162);
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const kbarColor = Color(0xFF311B92);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
-  colors: [Color(0xFFFFA53E), Color(0xFFFF7643)],
+  colors : colors,
 );
+
+
 const kSecondaryColor = Color(0xFF979797);
 const kTextColor = Color(0xFF757575);
 

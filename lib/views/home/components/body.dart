@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:slouma_v1/views/home/ListCompany.dart';
+import 'package:slouma_v1/views/home/ListOffres.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -17,7 +17,7 @@ class Body extends StatelessWidget {
               ),
             ),
             new Center(
-              child: ListCompany(),
+              child: ListOffres(),
             )
           ],
         ));

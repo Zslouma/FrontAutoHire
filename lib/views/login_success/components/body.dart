@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:slouma_v1/components/default_button.dart';
 import 'package:slouma_v1/size_config.dart';
 import 'package:slouma_v1/views/home/ListCompany.dart';
+import 'package:slouma_v1/views/home/ListOffres.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -28,7 +29,8 @@ class Body extends StatelessWidget {
           child: DefaultButton(
             text: "Back to home",
             press: () {
-              Navigator.pushNamed(context, ListCompany.routeName);
+                                 Navigator.pushNamed(context, ListOffres.routeName);
+
             },
           ),
         ),
