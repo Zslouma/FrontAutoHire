@@ -34,7 +34,24 @@ class ListTest extends StatelessWidget {
           ),
         ],
       ),
-      body: SizedBox(
+      body: menuTest(),
+      extendBody: true,
+      endDrawer: Container(
+        child: SizedBox(
+          height: 50.0,
+          width: 50.0,
+          child: ClipRRect(
+            child: Image.asset("assets/images/visa.png"),
+          ),
+        ),
+      ),
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.message),
+    );
+  }
+
+  Container menuTest() {
+    return Container(
+      child: SizedBox(
         child: FutureBuilder(
           future: getCompany(),
           builder: (context, snapshot) {
@@ -276,7 +293,6 @@ class ListTest extends StatelessWidget {
           },
         ),
       ),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.message),
     );
   }
 
