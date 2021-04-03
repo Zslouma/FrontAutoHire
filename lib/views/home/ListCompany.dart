@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:slouma_v1/components/coustom_bottom_nav_bar.dart';
+import 'package:slouma_v1/constants.dart';
 import 'package:slouma_v1/enums.dart';
 import 'package:slouma_v1/models/AvisModel.dart';
 import "package:slouma_v1/utils/utils.dart";
@@ -60,6 +61,195 @@ class ListCompany extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.settings),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('This is a snackbar')));
+            },
+          ),
+        ],
+      ),
+      body: Center(
+        child: FutureBuilder(
+          future: getCompany(),
+          builder: (context, snapshot) {
+            if (snapshot.data != null) {
+              return Scaffold(
+                body: new Stack(
+                  children: <Widget>[
+                    new Center(
+                        child: ListView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          child: Row(
+                            children: [
+                              InkWell(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      child: Column(
+                                        children: <Widget>[
+                                          Container(
+                                            color: Colors.white,
+                                            padding: EdgeInsets.only(
+                                                bottom: 12.0,
+                                                left: 10.0,
+                                                right: 10.0),
+                                            child: Column(
+                                              children: <Widget>[
+                                                Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Container(
+                                                      padding: EdgeInsets.only(
+                                                          right: 10.0),
+                                                      child: SizedBox(
+                                                        height: 50.0,
+                                                        width: 50.0,
+                                                        child: ClipRRect(
+                                                          child: Image.asset(
+                                                              "assets/images/Welcome.png"),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Row(
+                                                          children: [
+                                                            Container(
+                                                              child: Text(
+                                                                snapshot.data[
+                                                                        index]
+                                                                    ["nom"],
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontSize:
+                                                                        16.0,
+                                                                    color: Colors
+                                                                        .black),
+                                                              ),
+                                                            ),
+                                                            IconButton(
+                                                              // deleteee
+                                                              /* icon: Icon(Icons.delete),
+                                          onPressed: () => confirtDelete(
+                                              snapshot.data[index]['id'], context),*/
+                                                              icon: Icon(Icons
+                                                                  .rate_review_outlined),
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      right:
+                                                                          15),
+                                                              onPressed: () {
+                                                                idCompany =
+                                                                    snapshot.data[
+                                                                            index]
+                                                                        ['id'];
+                                                                _RatingModalBottomSheet(
+                                                                    context);
+                                                              },
+                                                            ),
+                                                            IconButton(
+                                                              icon: Icon(
+                                                                  Icons.people),
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      right:
+                                                                          10),
+                                                              onPressed: () {
+                                                                String idCmp =
+                                                                    snapshot.data[
+                                                                            index]
+                                                                        ['id'];
+                                                                Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                      builder: (context) =>
+                                                                          ListEmployee(
+                                                                              idC: idCmp)),
+                                                                );
+                                                              },
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Container(
+                                                          child: Text(
+                                                            snapshot.data[index]
+                                                                ["industry"],
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                                fontSize: 14.0,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          child: Text(
+                                                            snapshot.data[index]
+                                                                ["about"],
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                                fontSize: 14.0,
+                                                                color: Colors
+                                                                    .grey),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      left: 40.0, top: 10.0),
+                                                  height: 1.0,
+                                                  color: Colors.grey[300],
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                onTap: () {
+                                  String idCmp = snapshot.data[index]['id'];
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            ListAvis(idA: idCmp)),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    )),
+                  ],
+                ),
+              );
+              /* return Scaffold(
       body: Center(
         child: FutureBuilder(
           future: getCompany(),
@@ -89,10 +279,10 @@ class ListCompany extends StatelessWidget {
                                 selectedTileColor: Colors.black,
                                 leading: Icon(Icons.arrow_drop_down_circle),
                                 title: Text(snapshot.data[index]['nom'],
-                                    style: TextStyle(color: Colors.pink)),
-                                tileColor: Color(0xFFF8BBD0),
+                                    style: TextStyle(color: Colors.white)),
+                                tileColor: kPrimaryColor,
                                 subtitle: Text(snapshot.data[index]['industry'],
-                                    style: TextStyle(color: Colors.pink)),
+                                    style: TextStyle(color: Colors.white)),
                                 trailing: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
@@ -138,7 +328,7 @@ class ListCompany extends StatelessWidget {
                     ))
                   ],
                 ),
-              );
+              );*/
             } else {
               return Center(child: Text("hi ena list company wahdi"));
             }
@@ -188,7 +378,7 @@ class ListCompany extends StatelessWidget {
           return StatefulBuilder(builder: (BuildContext context,
               StateSetter setState /*You can rename this!*/) {
             return Container(
-                height: MediaQuery.of(context).size.height * .69,
+                height: MediaQuery.of(context).size.height * .50,
                 child: Padding(
                     padding: const EdgeInsets.all(1.0),
                     child: Column(

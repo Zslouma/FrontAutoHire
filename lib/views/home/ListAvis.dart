@@ -76,27 +76,41 @@ class ListAvis extends StatelessWidget {
                         } else {
                           result = 0;
                         }
-                        return Card(
-                          elevation: 10,
-                          child: ListTile(
-                            selectedTileColor: Colors.black,
-                            leading: Icon(Icons.arrow_drop_down_circle),
-                            title: Text(snapshot.data[index]['commentaire'],
-                                style: TextStyle(color: Colors.white)),
-                            tileColor: Color(0xFFC51162),
-                            subtitle: result == 0
-                                ? RatingEmpty((rating) {},
-                                    5) //code if above statement is true
-                                : result == 1
-                                    ? Rating1((rating) {}, 5)
-                                    : result == 2
-                                        ? Rating2((rating) {}, 5)
-                                        : result == 3
-                                            ? Rating3((rating) {}, 5)
-                                            : result == 4
-                                                ? Rating4((rating) {}, 5)
-                                                : Rating5((rating) {}, 5),
-                          ),
+                        return Center(
+                          child: Card(
+                              elevation: 10,
+                              child: Column(children: [
+                                ListTile(
+                                  selectedTileColor: Colors.black,
+                                  leading: Icon(Icons.arrow_drop_down_circle),
+                                  title: Text(
+                                    snapshot.data[index]['commentaire'],
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 19.0,
+                                        color: Colors.black),
+                                  ),
+                                  tileColor: Color(0xFFFFFF),
+                                  subtitle: result == 0
+                                      ? RatingEmpty((rating) {},
+                                          5) //code if above statement is true
+                                      : result == 1
+                                          ? Rating1((rating) {}, 5)
+                                          : result == 2
+                                              ? Rating2((rating) {}, 5)
+                                              : result == 3
+                                                  ? Rating3((rating) {}, 5)
+                                                  : result == 4
+                                                      ? Rating4((rating) {}, 5)
+                                                      : Rating5((rating) {}, 5),
+                                ),
+                                Container(
+                                  margin:
+                                      EdgeInsets.only(left: 50.0, top: 10.0),
+                                  height: 1.0,
+                                  color: Colors.grey[300],
+                                ),
+                              ])),
                         );
                       },
                     ))

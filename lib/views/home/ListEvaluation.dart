@@ -67,9 +67,14 @@ class ListEvaluation extends StatelessWidget {
                                 ListTile(
                                   selectedTileColor: Colors.black,
                                   leading: Icon(Icons.people_outlined),
-                                  title: Text("integrity",
-                                      style: TextStyle(color: Colors.white)),
-                                  tileColor: Color(0xFFC51162),
+                                  title: Text(
+                                    "integrity",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 19.0,
+                                        color: Colors.black),
+                                  ),
+                                  tileColor: Color(0xFFFFFF),
                                   subtitle: snapshot.data[index]['integrity'] ==
                                           0
                                       ? RatingEmpty((rating) {},
@@ -89,12 +94,21 @@ class ListEvaluation extends StatelessWidget {
                                                       ? Rating4((rating) {}, 5)
                                                       : Rating5((rating) {}, 5),
                                 ),
+                                Container(
+                                  margin:
+                                      EdgeInsets.only(left: 50.0, top: 10.0),
+                                  height: 1.0,
+                                  color: Colors.grey[300],
+                                ),
                                 ListTile(
                                   selectedTileColor: Colors.black,
                                   leading: Icon(Icons.note_add_outlined),
                                   title: Text("planification",
-                                      style: TextStyle(color: Colors.white)),
-                                  tileColor: Color(0xFFC51162),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 19.0,
+                                          color: Colors.black)),
+                                  tileColor: Color(0xFFFFFF),
                                   subtitle: snapshot.data[index]
                                               ['planification'] ==
                                           0
@@ -117,12 +131,23 @@ class ListEvaluation extends StatelessWidget {
                                                       ? Rating4((rating) {}, 5)
                                                       : Rating5((rating) {}, 5),
                                 ),
+                                Container(
+                                  margin:
+                                      EdgeInsets.only(left: 50.0, top: 10.0),
+                                  height: 1.0,
+                                  color: Colors.grey[300],
+                                ),
                                 ListTile(
                                   selectedTileColor: Colors.black,
                                   leading: Icon(Icons.timer),
-                                  title: Text("ponctuality",
-                                      style: TextStyle(color: Colors.white)),
-                                  tileColor: Color(0xFFC51162),
+                                  title: Text(
+                                    "ponctuality",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 19.0,
+                                        color: Colors.black),
+                                  ),
+                                  tileColor: Color(0xFFFFFF),
                                   subtitle: snapshot.data[index]
                                               ['ponctuality'] ==
                                           0
@@ -144,13 +169,24 @@ class ListEvaluation extends StatelessWidget {
                                                       ? Rating4((rating) {}, 5)
                                                       : Rating5((rating) {}, 5),
                                 ),
+                                Container(
+                                  margin:
+                                      EdgeInsets.only(left: 50.0, top: 10.0),
+                                  height: 1.0,
+                                  color: Colors.grey[300],
+                                ),
                                 ListTile(
                                   selectedTileColor: Colors.black,
                                   leading:
                                       Icon(Icons.cast_for_education_rounded),
-                                  title: Text("innovation",
-                                      style: TextStyle(color: Colors.white)),
-                                  tileColor: Color(0xFFC51162),
+                                  title: Text(
+                                    "innovation",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 19.0,
+                                        color: Colors.black),
+                                  ),
+                                  tileColor: Color(0xFFFFFF),
                                   subtitle: snapshot.data[index]
                                               ['innovation'] ==
                                           0
@@ -172,13 +208,24 @@ class ListEvaluation extends StatelessWidget {
                                                       ? Rating4((rating) {}, 5)
                                                       : Rating5((rating) {}, 5),
                                 ),
+                                Container(
+                                  margin:
+                                      EdgeInsets.only(left: 50.0, top: 10.0),
+                                  height: 1.0,
+                                  color: Colors.grey[300],
+                                ),
                                 ListTile(
                                   selectedTileColor: Colors.black,
                                   leading: Icon(
                                       Icons.sentiment_very_satisfied_outlined),
-                                  title: Text("motivation",
-                                      style: TextStyle(color: Colors.white)),
-                                  tileColor: Color(0xFFC51162),
+                                  title: Text(
+                                    "motivation",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 19.0,
+                                        color: Colors.black),
+                                  ),
+                                  tileColor: Color(0xFFFFFF),
                                   subtitle: snapshot.data[index]
                                               ['motivation'] ==
                                           0
@@ -200,12 +247,23 @@ class ListEvaluation extends StatelessWidget {
                                                       ? Rating4((rating) {}, 5)
                                                       : Rating5((rating) {}, 5),
                                 ),
+                                Container(
+                                  margin:
+                                      EdgeInsets.only(left: 50.0, top: 10.0),
+                                  height: 1.0,
+                                  color: Colors.grey[300],
+                                ),
                                 ListTile(
                                   selectedTileColor: Colors.black,
                                   leading: Icon(Icons.trending_up_sharp),
-                                  title: Text("amelioration",
-                                      style: TextStyle(color: Colors.white)),
-                                  tileColor: Color(0xFFC51162),
+                                  title: Text(
+                                    "amelioration",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 19.0,
+                                        color: Colors.black),
+                                  ),
+                                  tileColor: Color(0xFFFFFF),
                                   subtitle: snapshot.data[index]
                                               ['amelioration'] ==
                                           0
@@ -228,13 +286,36 @@ class ListEvaluation extends StatelessWidget {
                                                       ? Rating4((rating) {}, 5)
                                                       : Rating5((rating) {}, 5),
                                 ),
+                                Container(
+                                  margin:
+                                      EdgeInsets.only(left: 50.0, top: 10.0),
+                                  height: 1.0,
+                                  color: Colors.grey[300],
+                                ),
                                 ListTile(
                                   selectedTileColor: Colors.black,
                                   leading: Icon(Icons.note_add_rounded),
                                   title: Text(
-                                      snapshot.data[index]['commentaire'],
-                                      style: TextStyle(color: Colors.white)),
-                                  tileColor: Color(0xFFC51162),
+                                    "commentaire",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 19.0,
+                                        color: Colors.black),
+                                  ),
+                                  tileColor: Color(0xFFFFFF),
+                                  subtitle: Text(
+                                    snapshot.data[index]['commentaire'],
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 16.0,
+                                        color: Colors.grey),
+                                  ),
+                                ),
+                                Container(
+                                  margin:
+                                      EdgeInsets.only(left: 50.0, top: 10.0),
+                                  height: 3.0,
+                                  color: Colors.grey[300],
                                 ),
                               ],
                             ));

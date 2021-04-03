@@ -47,8 +47,8 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, ListCompany.routeName),
+                onPressed: () => Navigator.pushReplacementNamed(
+                    context, ListCompany.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -57,8 +57,8 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, ListOffres.routeName),
+                onPressed: () => Navigator.pushReplacementNamed(
+                    context, ListOffres.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -68,7 +68,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       : inActiveIconColor,
                 ),
                 onPressed: () =>
-                    Navigator.pushNamed(context, ListTest.routeName),
+                    Navigator.pushReplacementNamed(context, ListTest.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -78,7 +78,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       : inActiveIconColor,
                 ),
                 onPressed: () =>
-                    Navigator.pushNamed(context, HomePage.routeName),
+                    Navigator.pushReplacementNamed(context, HomePage.routeName),
               ),
             ],
           )),

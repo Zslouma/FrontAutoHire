@@ -62,6 +62,130 @@ class ListEmployee extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Center(
+        child: FutureBuilder(
+          future: getEmployee(),
+          builder: (context, snapshot) {
+            if (snapshot.data != null) {
+              return Scaffold(
+                body: new Stack(
+                  children: <Widget>[
+                    new Center(
+                        child: ListView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          child: InkWell(
+                            child: Container(
+                              child: Column(
+                                children: <Widget>[
+                                  Container(
+                                    color: Colors.white,
+                                    padding: EdgeInsets.only(
+                                        bottom: 12.0, left: 10.0, right: 10.0),
+                                    width: MediaQuery.of(context).size.width,
+                                    child: Column(
+                                      children: <Widget>[
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              padding:
+                                                  EdgeInsets.only(right: 10.0),
+                                              child: SizedBox(
+                                                height: 50.0,
+                                                width: 50.0,
+                                                child: ClipRRect(
+                                                  child: Image.asset(
+                                                      "assets/images/Welcome.png"),
+                                                ),
+                                              ),
+                                            ),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Row(
+                                                  children: [
+                                                    Container(
+                                                      child: Text(
+                                                        snapshot.data[index]
+                                                            ["username"],
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontSize: 16.0,
+                                                            color:
+                                                                Colors.black),
+                                                      ),
+                                                    ),
+                                                    IconButton(
+                                                      // deleteee
+                                                      /* icon: Icon(Icons.delete),
+                                  onPressed: () => confirtDelete(
+                                      snapshot.data[index]['id'], context),*/
+                                                      icon: Icon(Icons
+                                                          .rate_review_outlined),
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              right: 15),
+                                                      onPressed: () {
+                                                        idEmp = snapshot
+                                                            .data[index]['id'];
+                                                        _RatingModalBottomSheet(
+                                                            context);
+                                                      },
+                                                    ),
+                                                  ],
+                                                ),
+                                                Container(
+                                                  child: Text(
+                                                    snapshot.data[index]
+                                                        ["email"],
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        fontSize: 14.0,
+                                                        color: Colors.black),
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(
+                                              left: 50.0, top: 10.0),
+                                          height: 1.0,
+                                          color: Colors.grey[300],
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              String idCmp = snapshot.data[index]['id'];
+
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ListEvaluation(idC: idCmp)),
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    )),
+                  ],
+                ),
+              );
+
+              /*
+    return Scaffold(
       backgroundColor: Colors.black,
       body: Center(
         child: FutureBuilder(
@@ -125,7 +249,7 @@ class ListEmployee extends StatelessWidget {
                 ),
                 bottomNavigationBar:
                     CustomBottomNavBar(selectedMenu: MenuState.message),
-              );
+              );*/
             } else {
               return Center(child: Text("hi ena list employee wahdi"));
             }
@@ -189,7 +313,7 @@ class ListEmployee extends StatelessWidget {
           return StatefulBuilder(builder: (BuildContext context,
               StateSetter setState /*You can rename this!*/) {
             return Container(
-                height: MediaQuery.of(context).size.height * .80,
+                height: MediaQuery.of(context).size.height * .60,
                 child: Padding(
                     padding: const EdgeInsets.all(1.0),
                     child: Column(
