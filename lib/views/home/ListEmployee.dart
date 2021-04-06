@@ -2,20 +2,26 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:slouma_v1/components/coustom_bottom_nav_bar.dart';
 import 'package:slouma_v1/models/EvaluationModel.dart';
 import 'package:slouma_v1/utils/utils.dart';
 import 'package:slouma_v1/views/widget/rating.dart';
 
-import '../../enums.dart';
 import 'ListEvaluation.dart';
 
-class ListEmployee extends StatelessWidget {
+class ListEmployee extends StatefulWidget {
   final String idC;
-  String idEmp;
+
   ListEmployee({Key key, this.idC}) : super(key: key);
+
+  @override
+  _ListEmployeeState createState() => _ListEmployeeState();
+}
+
+class _ListEmployeeState extends State<ListEmployee> {
+  String idEmp;
+
   getEmployee() async {
-    var res = await http.get(Uri.http(Utils.url, "/user/e/" + idC));
+    var res = await http.get(Uri.http(Utils.url, "/user/e/" + widget.idC));
 
     if (res.statusCode == 200) {
       var jsonObj = json.decode(res.body);
@@ -27,6 +33,7 @@ class ListEmployee extends StatelessWidget {
     'Content-Type': 'application/json',
     'authorization': 'Basic c3R1ZHlkb3RlOnN0dWR5ZG90ZTEyMw=='
   };
+
   Future<EvaluationModel> createAvis(
       String entreprise,
       String employee,
@@ -392,7 +399,7 @@ class ListEmployee extends StatelessWidget {
                                 ),
                                 IconButton(
                                   onPressed: () async {
-                                    final String entreprise = idC;
+                                    final String entreprise = widget.idC;
                                     final String employee = idEmp;
                                     final String comment =
                                         commentController.text;

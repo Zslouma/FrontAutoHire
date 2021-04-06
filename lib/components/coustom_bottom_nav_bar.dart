@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:slouma_v1/videocall/UI/home_page.dart';
 import 'package:slouma_v1/views/home/ListCompany.dart';
 import 'package:slouma_v1/views/home/ListOffres.dart';
+import 'package:slouma_v1/views/home/listCandidature.dart';
 import 'package:slouma_v1/views/home/listTest.dart';
 
 import '../constants.dart';
@@ -42,13 +43,23 @@ class CustomBottomNavBar extends StatelessWidget {
             children: [
               IconButton(
                 icon: SvgPicture.asset(
-                  "assets/icons/Shop Icon.svg",
+                  "assets/icons/Heart Icon.svg",
                   color: MenuState.home == selectedMenu
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
                 onPressed: () => Navigator.pushReplacementNamed(
                     context, ListCompany.routeName),
+              ),
+              IconButton(
+                icon: SvgPicture.asset(
+                  "assets/icons/Flash Icon.svg",
+                  color: MenuState.jobs == selectedMenu
+                      ? kPrimaryColor
+                      : inActiveIconColor,
+                ),
+                onPressed: () => Navigator.pushReplacementNamed(
+                    context, ListCandidature.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset(

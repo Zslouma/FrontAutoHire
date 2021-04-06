@@ -5,7 +5,6 @@ import 'package:slouma_v1/size_config.dart';
 
 // This is the best practice
 import '../components/splash_content.dart';
-import '../../../components/default_button.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -67,9 +66,11 @@ class _BodyState extends State<Body> {
                       ),
                     ),
                     Spacer(flex: 5),
-                    DefaultButton(
-                      text: "Continue",
-                      press: () {
+                    FloatingActionButton(
+                      child: Expanded(
+                        child: Text("Continue"),
+                      ),
+                      onPressed: () {
                         Navigator.pushNamed(context, SignInScreen.routeName);
                       },
                     ),

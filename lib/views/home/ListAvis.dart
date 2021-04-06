@@ -14,19 +14,29 @@ import 'package:slouma_v1/views/widget/affRatingEmpty.dart';
 
 import '../../enums.dart';
 
-class ListAvis extends StatelessWidget {
+class ListAvis extends StatefulWidget {
   final String idA;
+
+  ListAvis({Key key, this.idA}) : super(key: key);
+
+  @override
+  _ListAvisState createState() => _ListAvisState();
+}
+
+class _ListAvisState extends State<ListAvis> {
   String idEmp;
+
   int avg, s = 0;
 
   int result, l;
-  ListAvis({Key key, this.idA}) : super(key: key);
+
   Map<String, String> headers = {
     'Content-Type': 'application/json',
     'authorization': 'Basic c3R1ZHlkb3RlOnN0dWR5ZG90ZTEyMw=='
   };
+
   getAvis() async {
-    var res = await http.get(Uri.http(Utils.url, "/avis/e/" + idA));
+    var res = await http.get(Uri.http(Utils.url, "/avis/e/" + widget.idA));
     print(res);
     if (res.statusCode == 200) {
       print(res);

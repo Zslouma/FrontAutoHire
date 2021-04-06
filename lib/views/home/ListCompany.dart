@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:slouma_v1/components/coustom_bottom_nav_bar.dart';
-import 'package:slouma_v1/constants.dart';
 import 'package:slouma_v1/enums.dart';
 import 'package:slouma_v1/models/AvisModel.dart';
 import "package:slouma_v1/utils/utils.dart";
@@ -12,7 +11,14 @@ import 'package:slouma_v1/views/widget/rating.dart';
 import 'ListAvis.dart';
 import 'ListEmployee.dart';
 
-class ListCompany extends StatelessWidget {
+class ListCompany extends StatefulWidget {
+  static String routeName = "/list_c";
+
+  @override
+  _ListCompanyState createState() => _ListCompanyState();
+}
+
+class _ListCompanyState extends State<ListCompany> {
   String idCompany;
 
   getCompany() async {
@@ -27,6 +33,7 @@ class ListCompany extends StatelessWidget {
     'Content-Type': 'application/json',
     'authorization': 'Basic c3R1ZHlkb3RlOnN0dWR5ZG90ZTEyMw=='
   };
+
   getAvis() async {
     var res = await http.get(Uri.http(Utils.url, Utils.avis));
     print(res);
@@ -38,6 +45,7 @@ class ListCompany extends StatelessWidget {
     }
   }
 
+  // ignore: missing_return
   Future<AvisModel> createAvis(
       String entreprise, String user, String comment, int niveau) async {
     final response =
@@ -57,7 +65,6 @@ class ListCompany extends StatelessWidget {
     }
   }
 
-  static String routeName = "/list_c";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,7 +123,7 @@ class ListCompany extends StatelessWidget {
                                                         width: 50.0,
                                                         child: ClipRRect(
                                                           child: Image.asset(
-                                                              "assets/images/Welcome.png"),
+                                                              "assets/images/visa.png"),
                                                         ),
                                                       ),
                                                     ),
@@ -143,10 +150,6 @@ class ListCompany extends StatelessWidget {
                                                               ),
                                                             ),
                                                             IconButton(
-                                                              // deleteee
-                                                              /* icon: Icon(Icons.delete),
-                                          onPressed: () => confirtDelete(
-                                              snapshot.data[index]['id'], context),*/
                                                               icon: Icon(Icons
                                                                   .rate_review_outlined),
                                                               padding:
@@ -366,6 +369,7 @@ class ListCompany extends StatelessWidget {
             ));
   }
 
+  // ignore: non_constant_identifier_names
   void _RatingModalBottomSheet(context) {
     int _rating;
 

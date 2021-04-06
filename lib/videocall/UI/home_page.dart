@@ -1,3 +1,6 @@
+import 'package:slouma_v1/components/coustom_bottom_nav_bar.dart';
+
+import '../../enums.dart';
 import 'Dialogs/create_room.dart';
 import 'Dialogs/join_room.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +11,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFC51162),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -21,15 +23,19 @@ class HomePage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "AutoHire VideoCall Side",
-                  style: largeTxtStyle.copyWith(fontWeight: FontWeight.w600),
-                ),
+                Text("AutoHire VideoCall Side",
+                    style: TextStyle(
+                      color: Color(0xFFC51162),
+                      fontWeight: FontWeight.w800,
+                      fontSize: 24.0,
+                    )),
                 const SizedBox(height: 10),
-                Text(
-                  "Pour tous les candidats valide aprés l'envoi du CV",
-                  style: largeTxtStyle.copyWith(fontWeight: FontWeight.w600),
-                ),
+                Text("Pour tous les candidats valide aprés l'envoi du CV",
+                    style: TextStyle(
+                      color: Color(0xFFC51162),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20.0,
+                    )),
               ],
             ),
           ),
@@ -155,6 +161,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile),
     );
   }
 }

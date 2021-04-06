@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:slouma_v1/components/coustom_bottom_nav_bar.dart';
@@ -62,113 +61,7 @@ class ListTest extends StatelessWidget {
                     new Container(
                         margin: EdgeInsets.only(top: 30.0),
                         padding: EdgeInsets.only(bottom: 10.0, top: 30.0),
-                        child: ListView.builder(
-                          clipBehavior: Clip.hardEdge,
-                          shrinkWrap: true,
-                          padding: EdgeInsets.only(bottom: 10.0, top: 30.0),
-                          scrollDirection: Axis.horizontal,
-                          itemCount: snapshot.data.length,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    margin: EdgeInsets.only(left: 10.0),
-                                    height: 1.0,
-                                    color: Colors.blue[300],
-                                  ),
-                                  Container(
-                                    color: Colors.white,
-                                    padding: EdgeInsets.only(
-                                        bottom: 35.0, left: 35.0, right: 10.0),
-                                    width: MediaQuery.of(context).size.width,
-                                    child: Column(
-                                      children: <Widget>[
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              padding:
-                                                  EdgeInsets.only(right: 20.0),
-                                              child: SizedBox(
-                                                height: 50.0,
-                                                width: 50.0,
-                                                child: ClipRRect(
-                                                  child: Image.asset(
-                                                      "assets/images/visa.png"),
-                                                ),
-                                              ),
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: <Widget>[
-                                                Row(
-                                                  children: [
-                                                    Container(
-                                                      child: Text(
-                                                        snapshot.data[index]
-                                                            ["question"],
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            fontSize: 28.0,
-                                                            color:
-                                                                Colors.black),
-                                                      ),
-                                                    ),
-                                                    IconButton(
-                                                        icon:
-                                                            Icon(Icons.delete),
-                                                        onPressed: () =>
-                                                            confirtDelete(
-                                                                snapshot.data[
-                                                                        index]
-                                                                    ["id"],
-                                                                context))
-                                                  ],
-                                                ),
-                                                Container(
-                                                  child: Text(
-                                                    snapshot.data[index]
-                                                        ["reponse"],
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        fontSize: 14.0,
-                                                        color: Colors.black),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  child: Text(
-                                                    snapshot.data[index]
-                                                        ["sujet"],
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        fontSize: 14.0,
-                                                        color: Colors.grey),
-                                                  ),
-                                                ),
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: 50.0, top: 10.0),
-                                          height: 1.0,
-                                          color: Colors.red[300],
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            );
-                          },
-                        )),
+                        child: listHorizental(snapshot)),
                     new Container(
                       margin: EdgeInsets.only(left: 35.0, top: 250.0),
                       padding: EdgeInsets.only(bottom: 25.0),
@@ -247,7 +140,7 @@ class ListTest extends StatelessWidget {
                                                 Container(
                                                   child: Text(
                                                     snapshot.data[index]
-                                                        ["reponse"],
+                                                        ["reponseA"],
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.normal,
@@ -293,6 +186,97 @@ class ListTest extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+
+  ListView listHorizental(AsyncSnapshot<dynamic> snapshot) {
+    return ListView.builder(
+      clipBehavior: Clip.hardEdge,
+      shrinkWrap: true,
+      padding: const EdgeInsets.symmetric(
+        vertical: 10.0,
+        horizontal: 8.0,
+      ),
+      scrollDirection: Axis.horizontal,
+      itemCount: snapshot.data.length,
+      itemBuilder: (context, index) {
+        return Container(
+          child: Column(
+            children: <Widget>[
+              Container(
+                color: Colors.white,
+                padding: EdgeInsets.only(bottom: 35.0, left: 10.0, right: 10.0),
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                            child: Image.asset(
+                          "assets/images/visa.png",
+                          fit: BoxFit.fill,
+                        )),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Row(
+                              children: [
+                                Container(
+                                  margin:
+                                      EdgeInsets.only(left: 15.0, top: 10.0),
+                                  child: Text(
+                                    snapshot.data[index]["sujet"],
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 28.0,
+                                        color: Colors.black),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 35,
+                                ),
+                                IconButton(
+                                    icon: Icon(Icons.delete),
+                                    onPressed: () => confirtDelete(
+                                        snapshot.data[index]["id"], context))
+                              ],
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 0.0, top: 10.0),
+                              child: Text(
+                                snapshot.data[index]["question"],
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 14.0,
+                                    color: Colors.black),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                snapshot.data[index]["reponseA"],
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 14.0,
+                                    color: Colors.green),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 50.0, top: 10.0),
+                      height: 1.0,
+                      color: Colors.red[300],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 

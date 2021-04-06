@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:slouma_v1/components/coustom_bottom_nav_bar.dart';
 import 'package:slouma_v1/utils/utils.dart';
+import 'package:slouma_v1/views/detail_offre/detail_offre.dart';
 import 'package:slouma_v1/views/home/ListCandidats.dart';
 
 import '../../enums.dart';
@@ -17,7 +18,7 @@ class ListOffres extends StatelessWidget {
     }
   }
 
-  static String routeName = "/list_o";
+  static String routeName = "/list_of";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,10 +51,20 @@ class ListOffres extends StatelessWidget {
                               title: Text(snapshot.data[index]['titre'],
                                   style: TextStyle(color: Colors.white)),
                               tileColor: Color(0xFFC51162),
-                              subtitle: Text(
-                                  snapshot.data[index]['description'] +
-                                      snapshot.data[index]['address'],
-                                  style: TextStyle(color: Colors.white)),
+                              subtitle: TextButton(
+                                onPressed: () {
+                                  String nomCmp =
+                                      snapshot.data[index]['industry'];
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            DetailOffre(idC: nomCmp)),
+                                  );
+                                },
+                                child: Text(snapshot.data[index]['industry'],
+                                    style: TextStyle(color: Colors.white)),
+                              ),
                               trailing: IconButton(
                                 icon: Icon(Icons.delete),
                                 onPressed: () => confirtDelete(
