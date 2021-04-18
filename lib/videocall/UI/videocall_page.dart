@@ -1,7 +1,7 @@
 import 'dart:async';
-import '../Controllers/agora_controller.dart';
-import '../Helpers/utils.dart';
-import 'home_page.dart';
+import 'package:slouma_v1/videocall/Controllers/agora_controller.dart';
+import 'package:slouma_v1/videocall/Helpers/utils.dart';
+import 'package:slouma_v1/videocall/UI/home_page.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -294,7 +294,7 @@ class VideoCallScreenState extends State<VideoCallScreen> {
         bottomNavigationBar: GetBuilder<AgoraController>(builder: (_) {
           return ConvexAppBar(
             style: TabStyle.fixedCircle,
-            backgroundColor: const Color(0xFFC51162),
+            backgroundColor: const Color(0xFF1A1E78),
             color: Colors.white,
             items: [
               TabItem(

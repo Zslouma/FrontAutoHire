@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "airy-cortex-308216",
+  "private_key_id": "14583a64687050003a327a27427f2b7da2065efc",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCn+2Zktbg4zDSU\nJ9LgRvjjzBCc04MftsqwOZPOkHhMBYQ0+t8HHfPik8CxfW6d+ptmArc8uRIlYVS+\ndzg1hFiP83WUpoEtfHocwBDoH0TUNAf+OsQyDwhJ8ZpQS/qPsdxF5Dc7hz6UMWEQ\nVYSS6dr47tbXTX+0oYUF7pEh9x8IX0w3t206NpqjaCPiISDXDhH7pLM9s8ynY1cb\na7qGyNzrvRpMInAKtqMUEp6ZyOSwA8nHagqEO4lJWdASW7Pm+mYTQa5iD9TUP9Wz\nMeCBhIw9wmSIDIHuhZ1hONKfP9VN4/lJN2vTnat4htr4KwhNMUZiwiNg9FZUYeKK\n7tbHc5HbAgMBAAECggEAEFAxUvF02Qs3xfWSHJa34AN2z4wY7VEGoROOX56XGCbm\n/nAojZvijev0aCg6wFvQkJkN63c7pGat4KtaSZQ3N4+YqR18aQrwHu+mFKzIteTx\nq8ZQPF5KW0f7yPV/+Ul4D0+I756EPMcI2pm7fLr6OXeUZKdRkhynevp+nLJPkLPr\n9BLYiS28oG+OCRDsRs/rTunXLMUZQQ9hhg8KfgJbAGr51PeMX9Wm2G05s0J/dVa4\nLWUy8366auT6i4Oe0AKE8wzz+7msz3swzr2ptWutfFF7nirzprzW5Eqb51wJUEmW\nO9+3l6rc6fRhfIrRvvpRBR6ijKpk0O7U8onlnVMLkQKBgQDp/KI3hZlREmQ5yE3y\nO1sV6wW2b6aLJVo55qla9O1bE1kUDgpk8DYs0EQZ9NKMgm0UWAHvOuuZ+lIbsetH\niKSx/NzHdzSNNCzUJiMo0gWbHKJylRVLfKR+N/GWUJwgxVqLofXTJKMjmGrWt5hQ\n0jpTmC850DbFBAKxv9/qEdwV0QKBgQC3yRk/cEOtmCrumdtVZNjZj2sdw2baFoOH\nnmcVvPuVrzQCD8glg8O/fOaL3XKa3+P/Lf0eiWFlKFHMSiYeOtg6pq2qDXt3hlTW\n9R2plX8GsGu/hfp1ObpxJpp4LjjYda0a+e/S/dZ80kfsKWRtrdgoXv2thTLhCwqW\nCjwmPVab6wKBgBKxsHQnJFypz4AeVLvpqhlSMZ6lxPSRA2hk2Vr+/oesQA2uIX53\nAp0J9qbsPHYlZXmenmjymCgxK6YyzM1mSWI/BZSaHYS6impYsa5tOS1vWDs3VgA1\n8R50ccTEo/SqT9WgFvfLkY0ifEazXGP4p9hN7Ff+HqIW8/AnmEgnLSJBAoGAHX+a\nnNMRGdDduzRYvwkTwT/CyqEtZf3NGLx1AUk2/FyFtXsA/fx7M8YBXxupJHChMLkZ\n8ofMaScike6o1ZtOT4OnRi8pzRJzlZj8LNcA73rroG8Jtz0Pzs+KZZXNq/ifU0Ag\nnTX+8kPyJVazduM7Wad9ghdqBjL2fQShiOW5fAcCgYABQPJ3ywWhk4sPxPhjxaZ3\nWk1Gqu1y9sEQ75vC5dIO7ou7VVLooEc19gj722rr6T4ePITvjeIj5ffAI/xgnYJX\nlR59p6/vdR2kQ5x55L5uuhiorI+sPpCjycsxLcnBdRCy/OVFuQ2FszI76qkFq/Gr\noUFycZv7qT/u8mxneJqKaw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "dialogflow-autohire@airy-cortex-308216.iam.gserviceaccount.com",
+  "client_id": "112725109294935852425",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dialogflow-autohire%40airy-cortex-308216.iam.gserviceaccount.com"
+}

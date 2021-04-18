@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
-import '../Helpers/utils.dart';
+import 'package:slouma_v1/videocall/Helpers/utils.dart';
 import 'package:get/get.dart';
 
 class AgoraController extends GetxController {

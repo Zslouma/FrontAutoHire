@@ -66,7 +66,10 @@ class _BodyState extends State<Body> {
                       ),
                     ),
                     Spacer(flex: 5),
-                    FloatingActionButton(
+                    TextButton(
+                      style: ButtonStyle(
+                        alignment: Alignment.center,
+                      ),
                       child: Expanded(
                         child: Text("Continue"),
                       ),

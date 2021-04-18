@@ -24,6 +24,8 @@ dependencies:
   flutter_dialogflow_v2: ^0.3.2
   flutter:
     sdk: flutter 
+  flutter_localizations:
+    sdk: flutter
    
 
 
@@ -45,6 +47,10 @@ dependencies:
   cached_network_image: ^2.2.0+1
   material_design_icons_flutter: ^4.0.5345
   material_segmented_control: ^2.1.0
+  flutter_dialogflow: ^0.1.3
+  bubble: ^1.1.9+1
+  intl:
+  
 
 
 dev_dependencies:
@@ -66,7 +72,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-    - assets/vibrant-beanbag-307916-a645d9852ea3.json
+    - assets/service.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

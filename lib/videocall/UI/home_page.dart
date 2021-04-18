@@ -1,16 +1,16 @@
-import 'package:slouma_v1/components/coustom_bottom_nav_bar.dart';
-
-import '../../enums.dart';
-import 'Dialogs/create_room.dart';
-import 'Dialogs/join_room.dart';
+import 'package:slouma_v1/videocall/UI/Dialogs/create_room.dart';
+import 'package:slouma_v1/videocall/UI/Dialogs/join_room.dart';
 import 'package:flutter/material.dart';
-import '../Helpers/text_styles.dart';
+import 'package:slouma_v1/videocall/Helpers/text_styles.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
-  static String routeName = "/videocall";
+  static String routeName = "/videe";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF1A1E78),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -23,19 +23,15 @@ class HomePage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("AutoHire VideoCall Side",
-                    style: TextStyle(
-                      color: Color(0xFFC51162),
-                      fontWeight: FontWeight.w800,
-                      fontSize: 24.0,
-                    )),
+                Text(
+                  "VideoChat App",
+                  style: largeTxtStyle.copyWith(fontWeight: FontWeight.w600),
+                ),
                 const SizedBox(height: 10),
-                Text("Pour tous les candidats valide aprés l'envoi du CV",
-                    style: TextStyle(
-                      color: Color(0xFFC51162),
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20.0,
-                    )),
+                Text(
+                  "Easy connect with friends via video call.",
+                  style: largeTxtStyle.copyWith(fontWeight: FontWeight.w600),
+                ),
               ],
             ),
           ),
@@ -84,14 +80,14 @@ class HomePage extends StatelessWidget {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Text(
-                                    "Creer un salon",
+                                    "Create Room",
                                     style: largeTxtStyle.copyWith(
-                                        color: const Color(0xFFC51162)),
+                                        color: const Color(0xFF1A1E78)),
                                   ),
                                   Text(
-                                    "Creer un salon pour l'envoyer aux candidats",
+                                    "create a unique agora room and ask others to join the same.",
                                     style: regularTxtStyle.copyWith(
-                                        color: const Color(0xFF000000)),
+                                        color: const Color(0xFF1A1E78)),
                                   ),
                                 ],
                               ),
@@ -107,7 +103,7 @@ class HomePage extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         height: 2,
                         margin: const EdgeInsets.all(20),
-                        color: const Color(0xFFC51162)),
+                        color: const Color(0xFF1A1E78)),
                   ),
                   Flexible(
                     flex: 4,
@@ -138,14 +134,14 @@ class HomePage extends StatelessWidget {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Text(
-                                    "Rejoindre un salon",
+                                    "Join Room",
                                     style: largeTxtStyle.copyWith(
-                                        color: const Color(0xFFC51162)),
+                                        color: const Color(0xFF1A1E78)),
                                   ),
                                   Text(
-                                    "Rejoindre un salon recu dans le message privé",
+                                    "Join a agora room created by your friend.",
                                     style: regularTxtStyle.copyWith(
-                                        color: const Color(0xFF000000)),
+                                        color: const Color(0xFF1A1E78)),
                                   ),
                                 ],
                               ),
@@ -161,7 +157,16 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.jobs),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xFF1A1E78),
+        child: Icon(Icons.thumb_up_alt_outlined),
+        onPressed: () {
+          Get.snackbar("You Liked ?", "Please ★ My Project On Git :) ",
+              backgroundColor: Colors.white,
+              colorText: Color(0xFF1A1E78),
+              snackPosition: SnackPosition.BOTTOM);
+        },
+      ),
     );
   }
 }

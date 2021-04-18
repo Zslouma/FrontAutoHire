@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:slouma_v1/models/AvisModel.dart';
 import 'package:slouma_v1/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
@@ -418,6 +419,7 @@ class _DetailOffreState extends State<DetailOffre>
                                                                                         widget._rating = 0;
                                                                                       });
                                                                                     }, 0);
+                                                                                    Get.snackbar("Add success", "Thanks for feedback", backgroundColor: Colors.white, colorText: Color(0xFF1A1E78), snackPosition: SnackPosition.BOTTOM);
                                                                                     setState(() {
                                                                                       widget._avis = avis;
                                                                                     });
@@ -956,6 +958,11 @@ class _DetailOffreState extends State<DetailOffre>
                                   setState(() {
                                     _avis = avis;
                                   });
+                                  Get.snackbar(
+                                      "Add success", "Thanks for feedback",
+                                      backgroundColor: Colors.white,
+                                      colorText: Color(0xFF1A1E78),
+                                      snackPosition: SnackPosition.BOTTOM);
                                 },
                               ),
                             ),

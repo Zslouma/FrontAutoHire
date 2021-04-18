@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:slouma_v1/videocall/UI/home_page.dart';
+import 'package:slouma_v1/views/chatbot_help/chatbot.dart';
 import 'package:slouma_v1/views/detail_offre/detail_offre.dart';
 import 'package:slouma_v1/views/forgot_password/forgot_password_screen.dart';
 import 'package:slouma_v1/views/home/ListCompany.dart';
@@ -28,6 +29,7 @@ final Map<String, WidgetBuilder> routes = {
   ListOffres.routeName: (context) => ListOffres(),
   DetailOffre.routeName: (context) => DetailOffre(),
   HomePage.routeName: (context) => HomePage(),
+  Chatbot.routeName: (context) => Chatbot(),
 
   /*CompleteProfileScreen.routeName: (context) => CompleteProfileScreen(),
   OtpScreen.routeName: (context) => OtpScreen(),

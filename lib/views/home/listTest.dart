@@ -16,6 +16,14 @@ class ListTest extends StatelessWidget {
     }
   }
 
+  getCompanies() async {
+    var res = await http.get(Uri.http(Utils.url, Utils.company));
+    if (res.statusCode == 200) {
+      var jsonObj = json.decode(res.body);
+      return jsonObj;
+    }
+  }
+
   static String routeName = "/list_t";
   @override
   Widget build(BuildContext context) {
@@ -52,7 +60,7 @@ class ListTest extends StatelessWidget {
     return Container(
       child: SizedBox(
         child: FutureBuilder(
-          future: getCompany(),
+          future: getCompanies(),
           builder: (context, snapshot) {
             if (snapshot.data != null) {
               return Scaffold(
@@ -117,7 +125,7 @@ class ListTest extends StatelessWidget {
                                                     Container(
                                                       child: Text(
                                                         snapshot.data[index]
-                                                            ["question"],
+                                                            ["nom"],
                                                         style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight.w600,
@@ -140,7 +148,7 @@ class ListTest extends StatelessWidget {
                                                 Container(
                                                   child: Text(
                                                     snapshot.data[index]
-                                                        ["reponseA"],
+                                                        ["adresse"],
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.normal,
@@ -151,7 +159,7 @@ class ListTest extends StatelessWidget {
                                                 Container(
                                                   child: Text(
                                                     snapshot.data[index]
-                                                        ["sujet"],
+                                                        ["industry"],
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.normal,
@@ -226,7 +234,7 @@ class ListTest extends StatelessWidget {
                                   margin:
                                       EdgeInsets.only(left: 15.0, top: 10.0),
                                   child: Text(
-                                    snapshot.data[index]["sujet"],
+                                    snapshot.data[index]["nom"],
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 28.0,
@@ -245,7 +253,7 @@ class ListTest extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(left: 0.0, top: 10.0),
                               child: Text(
-                                snapshot.data[index]["question"],
+                                snapshot.data[index]["adresse"],
                                 style: TextStyle(
                                     fontWeight: FontWeight.normal,
                                     fontSize: 14.0,
@@ -254,7 +262,7 @@ class ListTest extends StatelessWidget {
                             ),
                             Container(
                               child: Text(
-                                snapshot.data[index]["reponseA"],
+                                snapshot.data[index]["nom"],
                                 style: TextStyle(
                                     fontWeight: FontWeight.normal,
                                     fontSize: 14.0,

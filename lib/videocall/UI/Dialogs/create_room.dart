@@ -1,6 +1,6 @@
-import '../../Helpers/text_styles.dart';
-import '../../Helpers/utils.dart';
-import '../../UI/videocall_page.dart';
+import 'package:slouma_v1/videocall/Helpers/text_styles.dart';
+import 'package:slouma_v1/videocall/Helpers/utils.dart';
+import 'package:slouma_v1/videocall/UI/videocall_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -30,7 +30,7 @@ class _CreateRoomDialogState extends State<CreateRoomDialog> {
           ),
           Text(
             "Room id : " + roomId,
-            style: midTxtStyle.copyWith(color: const Color(0xFF000000)),
+            style: midTxtStyle.copyWith(color: const Color(0xFF1A1E78)),
           ),
           const SizedBox(
             height: 20,

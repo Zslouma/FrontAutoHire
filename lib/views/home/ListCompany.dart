@@ -206,12 +206,12 @@ class _ListCompanyState extends State<ListCompany> {
                                                         Container(
                                                           child: Text(
                                                             snapshot.data[index]
-                                                                ["about"],
+                                                                ["adresse"],
                                                             style: TextStyle(
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
-                                                                fontSize: 14.0,
+                                                                fontSize: 18.0,
                                                                 color: Colors
                                                                     .grey),
                                                           ),

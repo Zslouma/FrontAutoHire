@@ -1,6 +1,6 @@
-import '../../Helpers/text_styles.dart';
-import '../../Helpers/utils.dart';
-import '../../UI/videocall_page.dart';
+import 'package:slouma_v1/videocall/Helpers/text_styles.dart';
+import 'package:slouma_v1/videocall/Helpers/utils.dart';
+import 'package:slouma_v1/videocall/UI/videocall_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +10,7 @@ class JoinRoomDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      insetPadding: EdgeInsets.symmetric(vertical: 20),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       title: Text("Join Room"),
       content: ListView(
         shrinkWrap: true,
@@ -27,12 +27,12 @@ class JoinRoomDialog extends StatelessWidget {
                 hintText: "Enter room id to join",
                 focusedBorder: OutlineInputBorder(
                     borderSide:
-                        BorderSide(color: const Color(0xFFC51162), width: 2)),
+                        BorderSide(color: const Color(0xFF1A1E78), width: 2)),
                 enabledBorder: UnderlineInputBorder(
                     borderSide:
-                        BorderSide(color: const Color(0xFFC51162), width: 2))),
+                        BorderSide(color: const Color(0xFF1A1E78), width: 2))),
             style: regularTxtStyle.copyWith(
-                color: const Color(0xFFC51162), fontWeight: FontWeight.w600),
+                color: const Color(0xFF1A1E78), fontWeight: FontWeight.w600),
           ),
           const SizedBox(
             height: 20,
