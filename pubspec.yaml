@@ -21,7 +21,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  flutter_dialogflow_v2: ^0.3.2
+
+  flutter_dialogflow_v2: ^0.3.2 
+  url_launcher: '5.4.0'
+   
   flutter:
     sdk: flutter 
   flutter_localizations:

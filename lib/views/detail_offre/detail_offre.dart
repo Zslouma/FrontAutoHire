@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:slouma_v1/models/AvisModel.dart';
@@ -14,6 +15,7 @@ import 'package:slouma_v1/views/widget/affRating5.dart';
 import 'package:slouma_v1/views/widget/affRatingEmpty.dart';
 import 'package:slouma_v1/views/widget/rating.dart';
 import 'package:slouma_v1/models/EvaluationModel.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailOffre extends StatefulWidget {
   static String routeName = "/detail_offre";
@@ -263,7 +265,7 @@ class _DetailOffreState extends State<DetailOffre>
                                                                   left: 05.0,
                                                                   top: 10.0),
                                                           child: Text(
-                                                            "Company Details",
+                                                            "Overview",
                                                             style: TextStyle(
                                                                 fontWeight:
                                                                     FontWeight
@@ -283,42 +285,12 @@ class _DetailOffreState extends State<DetailOffre>
                                                           left: 05.0,
                                                           top: 10.0),
                                                       child: Text(
-                                                        "Adress : ",
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontSize: 16.0,
-                                                            color:
-                                                                Colors.black),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          left: 05.0,
-                                                          top: 10.0),
-                                                      child: Text(
-                                                        snapshot.data[index]
-                                                            ["adresse"],
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w300,
-                                                            fontSize: 16.0,
-                                                            color:
-                                                                Colors.black),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          left: 05.0,
-                                                          top: 10.0),
-                                                      child: Text(
                                                         "About : ",
                                                         style: TextStyle(
                                                             fontWeight:
-                                                                FontWeight.w500,
-                                                            fontSize: 16.0,
-                                                            color:
-                                                                Colors.black),
+                                                                FontWeight.bold,
+                                                            fontSize: 15.0,
+                                                            color: Colors.grey),
                                                       ),
                                                     ),
                                                     Container(
@@ -333,12 +305,287 @@ class _DetailOffreState extends State<DetailOffre>
                                                           style: TextStyle(
                                                               fontWeight:
                                                                   FontWeight
-                                                                      .w300,
+                                                                      .w400,
                                                               fontSize: 16.0,
                                                               color:
                                                                   Colors.black),
                                                         ),
                                                       ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 20,
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 05.0,
+                                                                  top: 10.0),
+                                                          child: Text(
+                                                            "Website  ",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 16.0,
+                                                                color: Colors
+                                                                    .grey),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 05.0,
+                                                                  top: 10.0),
+                                                          child: new RichText(
+                                                              text:
+                                                                  new TextSpan(
+                                                            children: [
+                                                              new TextSpan(
+                                                                text: snapshot
+                                                                            .data[
+                                                                        index]
+                                                                    ["website"],
+                                                                style: new TextStyle(
+                                                                    color: Colors
+                                                                        .blue),
+                                                                recognizer:
+                                                                    new TapGestureRecognizer()
+                                                                      ..onTap =
+                                                                          () {
+                                                                        launch(snapshot.data[index]
+                                                                            [
+                                                                            "website"]);
+                                                                      },
+                                                              ),
+                                                            ],
+                                                          )),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 05.0,
+                                                                  top: 10.0),
+                                                          child: Text(
+                                                            "Industry ",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 16.0,
+                                                                color: Colors
+                                                                    .grey),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 05.0,
+                                                                  top: 10.0),
+                                                          child: Text(
+                                                            snapshot.data[index]
+                                                                ["industry"],
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                fontSize: 16.0,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 05.0,
+                                                                  top: 10.0),
+                                                          child: Text(
+                                                            "Company Size ",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 16.0,
+                                                                color: Colors
+                                                                    .grey),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 05.0,
+                                                                  top: 10.0),
+                                                          child: Text(
+                                                            snapshot.data[index]
+                                                                ["size"],
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                fontSize: 16.0,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 05.0,
+                                                                  top: 10.0),
+                                                          child: Text(
+                                                            "Type ",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 16.0,
+                                                                color: Colors
+                                                                    .grey),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 05.0,
+                                                                  top: 10.0),
+                                                          child: Text(
+                                                            snapshot.data[index]
+                                                                ["type"],
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                fontSize: 16.0,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 05.0,
+                                                                  top: 10.0),
+                                                          child: Text(
+                                                            "Founded",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 16.0,
+                                                                color: Colors
+                                                                    .grey),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 05.0,
+                                                                  top: 10.0),
+                                                          child: Text(
+                                                            snapshot.data[index]
+                                                                ["founded"],
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                fontSize: 16.0,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 05.0,
+                                                                  top: 10.0),
+                                                          child: Text(
+                                                            "Specialities ",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 16.0,
+                                                                color: Colors
+                                                                    .grey),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 05.0,
+                                                                  top: 10.0),
+                                                          child: Text(
+                                                            snapshot.data[index]
+                                                                [
+                                                                "specialities"],
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                fontSize: 16.0,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 05.0,
+                                                                  top: 10.0),
+                                                          child: Text(
+                                                            "Location  ",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 16.0,
+                                                                color: Colors
+                                                                    .grey),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 05.0,
+                                                                  top: 10.0),
+                                                          child: Text(
+                                                            snapshot.data[index]
+                                                                ["adresse"],
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                fontSize: 16.0,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
                                                     SizedBox(
                                                       height: 20,
@@ -351,8 +598,8 @@ class _DetailOffreState extends State<DetailOffre>
                                                         "Rate Company !",
                                                         style: TextStyle(
                                                             fontWeight:
-                                                                FontWeight.w700,
-                                                            fontSize: 20.0,
+                                                                FontWeight.bold,
+                                                            fontSize: 18.0,
                                                             color:
                                                                 Colors.black),
                                                       ),
