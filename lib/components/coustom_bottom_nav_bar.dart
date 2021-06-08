@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:slouma_v1/videocall/UI/home_page.dart';
+import 'package:slouma_v1/videocall/pages/index.dart';
+import 'package:slouma_v1/views/chatbot_help/chatbot.dart';
 import 'package:slouma_v1/views/home/ListCompany.dart';
 import 'package:slouma_v1/views/home/ListOffres.dart';
-import 'package:slouma_v1/views/home/listTest.dart';
+import 'package:slouma_v1/views/profile/profile_screen.dart';
 
 import '../constants.dart';
 import '../enums.dart';
@@ -41,34 +42,34 @@ class CustomBottomNavBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
-                icon: SvgPicture.asset(
-                  "assets/icons/Shop Icon.svg",
+                icon: Icon(
+                  Icons.home,
                   color: MenuState.home == selectedMenu
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, ListCompany.routeName),
+                onPressed: () => Navigator.pushReplacementNamed(
+                    context, ListCompany.routeName),
               ),
               IconButton(
-                icon: SvgPicture.asset(
-                  "assets/icons/Heart Icon.svg",
+                icon: Icon(
+                  Icons.work_outline_outlined,
                   color: MenuState.favourite == selectedMenu
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, ListOffres.routeName),
+                onPressed: () => Navigator.pushReplacementNamed(
+                    context, ListOffres.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset(
                   "assets/icons/Chat bubble Icon.svg",
-                  color: MenuState.message == selectedMenu
+                  color: MenuState.jobs == selectedMenu
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, ListTest.routeName),
+                onPressed: () => Navigator.pushReplacementNamed(
+                    context, IndexPage.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -77,8 +78,8 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, HomePage.routeName),
+                onPressed: () => Navigator.pushReplacementNamed(
+                    context, ProfileScreen.routeName),
               ),
             ],
           )),

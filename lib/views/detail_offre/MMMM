@@ -1,0 +1,8 @@
+Text(
+                                        widget.offre['industry'],
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16.0,
+                                          color: Colors.black,
+                                        ),
+                                      ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_session/flutter_session.dart';
 import 'package:slouma_v1/components/custom_surfix_icon.dart';
 import 'package:slouma_v1/components/form_error.dart';
 import 'package:slouma_v1/helper/keyboard.dart';
@@ -73,12 +74,13 @@ class _SignFormState extends State<SignForm> {
           DefaultButton(
             text: "Continue",
             press: () {
-              if (_formKey.currentState.validate()) {
-                _formKey.currentState.save();
-                // if all are valid then go to success screen
-                KeyboardUtil.hideKeyboard(context);
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-              }
+              print(email);
+              _formKey.currentState.save();
+              // if all are valid then go to success screen
+              FlutterSession().set('email', email);
+
+              KeyboardUtil.hideKeyboard(context);
+              Navigator.pushNamed(context, LoginSuccessScreen.routeName);
             },
           ),
         ],

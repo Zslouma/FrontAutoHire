@@ -64,7 +64,7 @@ class ListCandidature extends StatelessWidget {
                   ],
                 ),
                 bottomNavigationBar:
-                    CustomBottomNavBar(selectedMenu: MenuState.favourite),
+                    CustomBottomNavBar(selectedMenu: MenuState.jobs),
               );
             } else {
               return Center(child: Text("hi ena list company wahdi"));
