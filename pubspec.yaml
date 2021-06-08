@@ -21,10 +21,15 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+
   flutter_dialogflow_v2: ^0.3.2
+  url_launcher: '5.4.0'
+
   flutter:
-    sdk: flutter 
-  
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -32,16 +37,35 @@ dependencies:
   cupertino_icons: ^0.1.3
   http: ^0.12.0
   # if you are using latest flutter please update your flutter_svg package to ^0.18.*
-  flutter_svg: ^0.20.0-nullsafety.3 # help us to use SVG in our app
+  flutter_svg: ^0.19.0 # help us to use SVG in our app
   provider: ^4.3.1 # for State management
   persistent_bottom_nav_bar: ^3.1.0
   get: ^3.10.2
   google_fonts: ^1.1.0
-  agora_rtc_engine: ^1.0.15
-  permission_handler:
+  agora_rtc_engine: 1.0.15
+  permission_handler: ^3.0.0
   flutter_share:
   signal_strength_indicator:
-  convex_bottom_bar:  
+  convex_bottom_bar:
+  cached_network_image: ^2.2.0+1
+  material_design_icons_flutter: ^4.0.5345
+  material_segmented_control: ^2.1.0
+  flutter_dialogflow: ^0.1.3
+  bubble: ^1.1.9+1
+  image_picker: ^0.7.4
+  multipart_request: ^0.3.1
+  file_picker: ^1.1.1
+  expandable: ^5.0.1
+  flutter_session: ^0.1.1
+  flutter_mapbox_autocomplete: ^1.0.3
+  flutter_mapbox_navigation: ^0.0.19
+  mapbox_search_flutter: any
+  flutter_skeleton: ^0.1.0+1
+dependency_overrides:
+  http: ^0.13.1
+  intl:
+  smooth_page_indicator: ^0.2.3
+
 
 
 dev_dependencies:
@@ -63,7 +87,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-    - assets/vibrant-beanbag-307916-a645d9852ea3.json
+    - assets/service.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

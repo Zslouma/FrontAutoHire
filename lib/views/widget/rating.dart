@@ -43,7 +43,7 @@ class _Rating extends State<Rating> {
         ),
         // ignore: deprecated_member_use
         FlatButton(
-          child: Text("Clear", style: TextStyle(color: Colors.blue)),
+          child: Text("", style: TextStyle(color: Colors.blue)),
           onPressed: () {
             setState(() {
               _currentRating = 0;

@@ -9,10 +9,18 @@ import 'package:slouma_v1/views/home/ListAvis.dart';
 import '../../enums.dart';
 import 'ListEvaluation.dart';
 
-class ListCandidats extends StatelessWidget {
+class ListCandidats extends StatefulWidget {
   final String idC;
-  String idEmp;
+
   ListCandidats({Key key, this.idC}) : super(key: key);
+
+  @override
+  _ListCandidatsState createState() => _ListCandidatsState();
+}
+
+class _ListCandidatsState extends State<ListCandidats> {
+  String idEmp;
+
   getCandidats() async {
     var res = await http.get(Uri.http(Utils.url, "/user/"));
 

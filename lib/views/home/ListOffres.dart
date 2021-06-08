@@ -1,60 +1,63 @@
 import 'dart:convert';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:http/http.dart' as http;
-
+import 'package:slouma_v1/components/coustom_bottom_nav_bar.dart';
 import 'package:slouma_v1/utils/utils.dart';
-
 import 'package:slouma_v1/views/home/offreDetails.dart';
+import 'package:slouma_v1/views/job/addJob.dart';
+import 'package:flutter_skeleton/flutter_skeleton.dart';
 
 import '../../enums.dart';
 
 class ListOffres extends StatelessWidget {
-  getOffres() async {
-    var res = await http.get(Uri.http(Utils.url, Utils.offre));
+Future<List<dynamic>> getScrapedOffres() async {
+    var res = await http.get(Uri.http(Utils.url, Utils.offreTanit)).timeout(const Duration(seconds: 30));
     if (res.statusCode == 200) {
       var jsonObj = json.decode(res.body);
-      return jsonObj;
+      var response = await http.get(Uri.http(Utils.url, Utils.offre));
+      var jdon = json.decode(response.body);
+     
+      var jsonn=jdon+jsonObj;  
+      return jsonn;
     }
   }
-
   static String routeName = "/list_o";
+   List candidates =[String];
+   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
+       appBar: AppBar(
+        title: Text("Jobs"),
+      ),
       body: Center(
-        child: FutureBuilder(
-          future: getOffres(),
-          builder: (context, snapshot) {
+        child: FutureBuilder <List<dynamic>>(
+          future: 
+           getScrapedOffres(),
+           builder: (context, AsyncSnapshot<List<dynamic>>  snapshot) {
             if (snapshot.data != null) {
               return Scaffold(
                 body: new Stack(
                   children: <Widget>[
-
                     new Center(
                         child: ListView.builder(
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
-
-                          return Container(
+                         return Container(
                          child:InkWell(
                              child: Column(
                 children: [
                   Container(
-                    
                     child: Column(
                       children: <Widget>[
-                     
-
-                        Container(
+                      Container(
                           color: Colors.white,
                           padding: EdgeInsets.only(bottom:12.0 ,left:10.0 ,right:10.0),
                           width: MediaQuery.of(context).size.width,
                           child: Column(
-                            
-
-                            children: <Widget>[
+                           children: <Widget>[
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,24 +66,20 @@ class ListOffres extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                      
                                         padding: EdgeInsets.only(right: 10.0),
                                         child: SizedBox(
-          height: 50.0,
-          width: 50.0,
-          child: ClipRRect(
-           
-            child: Image.asset("assets/images/hamma.jpeg"),
-          ),
-        ),
+                                          child: ClipRRect(
+                                            child: snapshot.data[index]['link']==null ?
+                                              Image.network('http://'+Utils.url+'/images/'+snapshot.data[index]['company']+'.png',width: 50,height: 50,):
+                                              Image.asset("assets/images/company.png",width: 50,height: 50,),
+                                          ),
+                                        ),
                                       ),
-
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        
-                                        children: <Widget>[
-                                          
+                                        crossAxisAlignment: CrossAxisAlignment.start, 
+                                        children: <Widget>[                                          
                                           Container(
+                                              width: 230,
                                               child: Text(
                                               snapshot.data[index]['titre'],
                                               style: TextStyle(
@@ -91,17 +90,17 @@ class ListOffres extends StatelessWidget {
                                             ),
                                           ),
                                           Container(
+                                             width: 230,
                                             child: Text(
-                                              snapshot.data[index]['industry'],
+                                              snapshot.data[index]['company'],
                                               style: TextStyle(
                                                 fontWeight: FontWeight.normal,
                                                 fontSize: 14.0,
-
                                                 color: Colors.black,
                                               ),
                                             ),
                                           ),
-                                           Container(
+                                           Container( width: 230,
                                             child: Text(
                                               snapshot.data[index]['address'],
                                               style: TextStyle(
@@ -111,32 +110,28 @@ class ListOffres extends StatelessWidget {
                                               ),
                                             ),
                                           ),
-                                          Container(
-                                            child: Text(
-                                              snapshot.data[index]['titre'],
+                                              snapshot.data[index]['createdAt']!=''?     Container(
+                                              child: Text(
+                                              snapshot.data[index]['createdAt'],
                                               style: TextStyle(
                                                 fontWeight: FontWeight.normal,
                                                 fontSize: 12.0,
                                                 color: Colors.grey,
                                               ),
                                             ),
-                                          ),
-                                          
-                                          Text(
-                                            snapshot.data[index]['titre'] +" . "+ " Edited",
+                                          ): SizedBox(),   
+                                           Text(
+                                           'Be in the first '+snapshot.data[index]['users'].length.toString()+' applicants',
                                             style: TextStyle(
                                               fontWeight: FontWeight.normal,
                                               fontSize: 12.0,
                                               color: Colors.grey,
                                             ),
-                                          ),
-                                         
+                                          ),                                        
                                         ],
-
                                       ),
                                     ],
                                   ),
-
                                   IconButton(
                               onPressed: () => confirtDelete(
                                   snapshot.data[index]['id'], context),
@@ -144,25 +139,16 @@ class ListOffres extends StatelessWidget {
                               icon: Icon(Icons.bookmark_border_outlined),
                               color: Colors.grey[600],
                             ),
-                                ],
-                                
+                                ],      
                               ),
                                Container(
                           margin: EdgeInsets.only(left: 50.0 , top: 10.0),  
-                            
                           height: 1.0,
-                         
-
                           color: Colors.grey[300],
-                        ),
-                              
-                              
+                           ),
                             ],
                           ),
                         ),
-                    
-                      
-                       
                       ],
                     ),
                   ),
@@ -171,27 +157,30 @@ class ListOffres extends StatelessWidget {
                              onTap: () {
                              showModalBottomSheet(context: context, backgroundColor: Colors.transparent , isScrollControlled: true,  builder: (_) {
                                return DraggableSearchableListView( offre: snapshot.data[index]);
-    },);
+                             },);
                             },
                           ),
-                
-            );
+                         );
                       }   
                     ))
                   ],
                 ),
               );
             } else {
-              return Center(child: Text("hi ena list offre wahdi"));
+               return CardListSkeleton(
+  style: SkeletonStyle(
+    theme: SkeletonTheme.Light,
+    isShowAvatar: true,
+    barCount: 3,
+  ),
+);
             }
           },
         ),
       ),
-      //bottomNavigationBar:
-        //  CustomBottomNavBar(selectedMenu: MenuState.favourite),
+  bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.favourite),
     );
   }
-
   confirtDelete(id, BuildContext context) {
     showDialog(
         context: context,
@@ -217,92 +206,5 @@ class ListOffres extends StatelessWidget {
                 )
               ],
             ));
-  }
-   void _tripEditModalBottomSheet(context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext bc) {
-        return  Container (
-          height: MediaQuery.of(context).size.height * .80,
-          child: Padding(
-            
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Text("Height"),
-                    Spacer(),
-                    IconButton(
-                      icon: Icon(
-                        Icons.cancel,
-                        color: Colors.orange,
-                        size: 25,
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    )
-                  ],
-                ),
-                Row(
-                  children: [
-                    Text(
-                     'hamma Dine',
-                      style: TextStyle(fontSize: 30, color: Colors.green[900]),
-                    ),
-                  ],
-                ),
-               Row(
-                  children: [
-                    Text(
-                     'hamma Dine',
-                      style: TextStyle(fontSize: 30, color: Colors.green[900]),
-                    ),
-                  ],
-                ),
-               Row(
-                  children: [
-                    Text(
-                     'hamma Dine',
-                      style: TextStyle(fontSize: 30, color: Colors.green[900]),
-                    ),
-                  ],
-                ),
-             
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    RaisedButton(
-                      child: Text('Submit'),
-                      color: Colors.deepPurple,
-                      textColor: Colors.white,
-                      onPressed: () async {
-                       
-                      },
-                    )
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    RaisedButton(
-                      child: Text('Delete'),
-                      color: Colors.red,
-                      textColor: Colors.white,
-                      onPressed: () async {
-                        
-                      },
-                    )
-                  ],
-                )
-              ],
-            ),
-          ),
-          
-        );
-      },
-    );
-  }
-
+  } 
 }

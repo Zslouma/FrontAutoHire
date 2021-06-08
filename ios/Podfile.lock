@@ -4,16 +4,44 @@ PODS:
     - Flutter
   - AgoraRtcEngine_iOS_Crypto (2.9.3)
   - Flutter (1.0.0)
+  - flutter_mapbox_navigation (0.0.17):
+    - Flutter
+    - MapboxNavigation (~> 0.40.0)
   - flutter_share (0.0.1):
     - Flutter
+  - Mapbox-iOS-SDK (5.9.0):
+    - MapboxMobileEvents (= 0.10.2)
+  - MapboxAccounts (2.2.0)
+  - MapboxCoreNavigation (0.40.0):
+    - MapboxAccounts (~> 2.2.0)
+    - MapboxDirections (~> 0.31.0)
+    - MapboxMobileEvents (~> 0.10.2)
+    - MapboxNavigationNative (~> 6.2.1)
+    - Turf (~> 0.3.0)
+  - MapboxDirections (0.31.1):
+    - Polyline (~> 4.2)
+    - Turf (~> 0.3.0)
+  - MapboxMobileEvents (0.10.2)
+  - MapboxNavigation (0.40.0):
+    - Mapbox-iOS-SDK (~> 5.6)
+    - MapboxCoreNavigation (= 0.40.0)
+    - MapboxMobileEvents (~> 0.10.2)
+    - MapboxSpeech (~> 0.3.0)
+    - Solar (~> 2.1)
+  - MapboxNavigationNative (6.2.1)
+  - MapboxSpeech (0.3.1)
   - path_provider (0.0.1):
     - Flutter
   - "permission_handler (5.1.0+2)":
     - Flutter
+  - Polyline (4.2.1)
+  - Solar (2.1.0)
+  - Turf (0.3.0)
 
 DEPENDENCIES:
   - agora_rtc_engine (from `.symlinks/plugins/agora_rtc_engine/ios`)
   - Flutter (from `Flutter`)
+  - flutter_mapbox_navigation (from `.symlinks/plugins/flutter_mapbox_navigation/ios`)
   - flutter_share (from `.symlinks/plugins/flutter_share/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
@@ -21,12 +49,25 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AgoraRtcEngine_iOS_Crypto
+    - Mapbox-iOS-SDK
+    - MapboxAccounts
+    - MapboxCoreNavigation
+    - MapboxDirections
+    - MapboxMobileEvents
+    - MapboxNavigation
+    - MapboxNavigationNative
+    - MapboxSpeech
+    - Polyline
+    - Solar
+    - Turf
 
 EXTERNAL SOURCES:
   agora_rtc_engine:
     :path: ".symlinks/plugins/agora_rtc_engine/ios"
   Flutter:
     :path: Flutter
+  flutter_mapbox_navigation:
+    :path: ".symlinks/plugins/flutter_mapbox_navigation/ios"
   flutter_share:
     :path: ".symlinks/plugins/flutter_share/ios"
   path_provider:
@@ -38,10 +79,22 @@ SPEC CHECKSUMS:
   agora_rtc_engine: 179de4fc456d101c568a532f72a273149013aa39
   AgoraRtcEngine_iOS_Crypto: 642d1e4cf24d837cba62d3b1617844f0737f69c1
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  flutter_mapbox_navigation: a66c99eb5caac2fba63df3284e87c23bbc998362
   flutter_share: 4be0208963c60b537e6255ed2ce1faae61cd9ac2
+  Mapbox-iOS-SDK: a5915700ec84bc1a7f8b3e746d474789e35b7956
+  MapboxAccounts: f9716ba2cc66013e44ef93e0e16cfa1049f3aeec
+  MapboxCoreNavigation: 2856c46bd064bb11c406ba00191d579cda424efa
+  MapboxDirections: 69dca02d780c5e506bdcc65385dd5fb77b9e90b5
+  MapboxMobileEvents: 2bc0ca2eedb627b73cf403258dce2b2fa98074a6
+  MapboxNavigation: 42bae50b0381dce317c85884ba0de38fc68a4814
+  MapboxNavigationNative: 11dc22140f4698d3f26989f2b6379dc81ef0d4c1
+  MapboxSpeech: 67a558a672dc2b6266a993f4624895f69e58d105
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
+  Polyline: 0e9890790292741c8186201a536b6bb6a78d02dd
+  Solar: 2dc6e7cc39186cb0c8228fa08df76fb50c7d8f24
+  Turf: c6bdf62d6a70c647874f295dd1cf4eefc0c3e9e6
 
-PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+PODFILE CHECKSUM: 82f12831670cf6c576f05753c4ce86ed633ce655
 
 COCOAPODS: 1.10.1
